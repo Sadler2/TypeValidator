@@ -58,3 +58,7 @@ console.log(add_throw(1, '3')) // <-- Error
 ```
 { code: 'string{/[A-Z]{3}-[0-9]{3}/}' }
 ```
+**Custom Function Validation**: Define custom validation logic for more complex scenarios.
+```
+{ palindrome: (value) => value === value.split('').reverse().join('') }
+```

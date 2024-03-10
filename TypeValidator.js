@@ -52,7 +52,9 @@ const TypeValidator = (function () {
     }
 
     function isType(value, type) {
-        if (typeof type === 'string') {
+        if (typeof type === 'function') {
+            return type(value);
+        } else if (typeof type === 'string') {
             if (type.startsWith('!')) {
                 const invertedType = type.slice(1);
                 return ![null, undefined].includes(value) && !isType(value, invertedType);
