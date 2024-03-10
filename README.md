@@ -46,7 +46,7 @@ console.log(add_throw(1, '3')) // <-- Error
 ```js
 {
     name: 'string',
-    address: { street: 'string', city: 'string', postalCode: 'string{/^[0-9]{5}$/}' }
+    address: { street: 'string', city: 'string', postalCode: 'string{/^[0-9]{5}$/}' },
     phones: '[string]'
 }
 ```
