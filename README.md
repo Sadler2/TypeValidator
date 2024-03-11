@@ -1,11 +1,7 @@
 ﻿
 # TypeValidator
 
-A tiny type validating library for my hobby projects.
-
-## Disclaimer
-
-This code was developed quickly and hacky, and may contain errors or unforeseen issues. Use it with caution and consider thoroughly. Please exercise caution when using this library in production environments as it may not have undergone extensive testing. Use it at your own discretion.
+A tiny type validating library for my hobby projects
 
 ## Syntax
 ```js
