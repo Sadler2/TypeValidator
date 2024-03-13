@@ -258,6 +258,13 @@ const cases = [
         expectedResult: true
     },
 
+    {
+        paramName: 'wrongCase1',
+        paramValue: "2",
+        expectedType: `"1"|"2"|"3"`,
+        expectedResult: true
+    },
+
 ];
 
 

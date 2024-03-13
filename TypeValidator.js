@@ -86,6 +86,16 @@ const TypeValidator = (function () {
                 return value.every(item => isType(item, baseType));
             }
 
+            const types = splitByDelimiter(type, '|');
+
+            if (types.length > 1) {
+                for (const t of types) {
+                    if (isType(value, t.trim())) {
+                        return true;
+                    }
+                }
+            }
+
             if (type.startsWith('"') && type.endsWith('"')) return value === type.slice(1, -1);
             if (type.startsWith('\'') && type.endsWith('\'')) return value === type.slice(1, -1);
 
@@ -118,16 +128,6 @@ const TypeValidator = (function () {
                 });
             }
 
-            const types = splitByDelimiter(type, '|');
-
-            if (types.length > 1) {
-                for (const t of types) {
-                    if (isType(value, t.trim())) {
-                        return true;
-                    }
-                }
-            }
-
             return typeof value === type;
         } else if (typeof type === 'object') {
             if (Array.isArray(type)) return Array.isArray(value) && value.every((item, index) => isType(item, type[index]));
@@ -150,7 +150,9 @@ const TypeValidator = (function () {
                 const argValue = args[paramName];
 
                 if (!isType(argValue, expectedType)) {
-                    throw new Error(`${paramName} must be of type ${expectedType}.`);
+                    let typeStr = expectedType;
+                    if (typeof typeStr === 'object') typeStr = JSON.stringify(typeStr);
+                    throw new Error(`${paramName} must be of type ${typeStr}.`);
                 }
             }
         }
